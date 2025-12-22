@@ -1,0 +1,17 @@
+<!-- =========================================================
+     HOUR HAND (updated) — no trailing end below the pivot ring
+     - viewBox: 0 0 200 200 (absolute centring with face)
+     - pivot at (100,100)
+     - ring radius reference: 7
+     - hour stroke: 12.5 (2.5x minute)
+     - endcap cleared so nothing protrudes beneath ring:
+         bottom y = pivot + ringRadius - (stroke/2) = 100 + 7 - 6.25 = 100.75
+     ========================================================= -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Hour hand">
+  <title>Hour Hand</title>
+
+  <g id="hour-hand" stroke="#111" stroke-linecap="round" fill="none">
+    <!-- Shorter than minute; bottom clipped to ring edge -->
+    <line x1="100" y1="28" x2="100" y2="100.75" stroke-width="12.5"></line>
+  </g>
+</svg>
