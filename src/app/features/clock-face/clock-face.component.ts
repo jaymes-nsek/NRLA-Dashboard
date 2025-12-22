@@ -1,13 +1,19 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {DateChipComponent} from '../date-chip/date-chip.component';
 
 @Component({
   selector: 'nrla-clock-face',
   standalone: true,
   templateUrl: './clock-face.component.html',
   styleUrl: './clock-face.component.scss',
+  imports: [
+    DateChipComponent
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClockFaceComponent implements OnInit {
+
+  protected readonly today = new Date();
 
   secsHandTransform = '';
   minsHandTransform = '';

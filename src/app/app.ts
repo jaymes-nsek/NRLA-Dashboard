@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
-import { ClockFaceComponent } from './features/clock-face/clock-face.component';
-import { DateChipComponent } from './features/date-chip/date-chip.component';
-import { WeatherChipComponent } from './features/weather-chip/weather-chip.component';
+import {Component} from '@angular/core';
+import {ClockFaceComponent} from './features/clock-face/clock-face.component';
 
 @Component({
   selector: 'nrla-root',
-  imports: [ClockFaceComponent, DateChipComponent, WeatherChipComponent],
+  imports: [ClockFaceComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

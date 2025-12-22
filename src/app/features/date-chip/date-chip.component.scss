@@ -1,25 +1,20 @@
 .date-chip {
-  display: inline-block;
+  padding: 8px 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px #e7e3e3;
 
-  &__surface {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-inline-size: 180px;
-    background: linear-gradient(90deg, #f8f5f5, #efebeb 40%, #f8f5f5);
-  }
+  display: flex;
+  justify-content: center;
 
   &__text {
     font-weight: 600;
     letter-spacing: 0.15rem;
     color: #1f2937;
-    font-size: 0.95rem;
+    font-size: 0.6rem;
     text-transform: uppercase;
-  }
 
-  &--solid &__surface {
-    background: #111827;
-    color: #f9fafb;
-    border-color: #111827;
+    -webkit-user-select: none; // Safari
+    user-select: none;
   }
 }

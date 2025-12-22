@@ -1,4 +1,4 @@
-<section class="clock-face" aria-label="Clock face with seconds hand">
+<div class="clock-face" aria-label="Clock face with seconds hand">
   <div class="clock-face__second-hand">
     <img [style.transform]="secsHandTransform"
       class="clock-face__second-hand-image"
@@ -25,4 +25,12 @@
       loading="lazy"
     />
   </div>
-</section>
+
+  <div class="clock-face__data-chips">
+    <nrla-date-chip [date]="today"></nrla-date-chip>
+
+    <nrla-date-chip [date]="today"></nrla-date-chip>
+    <!--<nrla-weather-chip class="app-shell__block"
+      [conditionCode]="weatherConditionCode" [temperatureCelsius]="currentTemperature"></nrla-weather-chip>-->
+  </div>
+</div>
