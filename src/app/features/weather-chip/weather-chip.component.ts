@@ -14,7 +14,7 @@ export class WeatherChipComponent {
   private _conditionCode?: string; // '01d'
 
   @Input()
-  temperatureCelsius: number | string = 9;
+  temperatureCelsius?: number ;
 
   @Input()
   set conditionCode(value: string) {

@@ -29,7 +29,7 @@
   <div class="clock-face__data-chips">
     <nrla-date-chip [date]="today" [style.visibility]="today ? 'visible' : 'hidden'"></nrla-date-chip>
 
-    <nrla-weather-chip class="clock-face__data-chips"
+    <nrla-weather-chip
                        [style.visibility]="(weatherConditionCode == 'null' && currentTemperature == 0) ? 'hidden' : 'visible'"
                        [conditionCode]="weatherConditionCode"
                        [temperatureCelsius]="currentTemperature"></nrla-weather-chip>

@@ -114,7 +114,7 @@ export class ClockFaceComponent implements OnInit {
           console.log('weatherResponse: ', weatherResponse);
 
           this.weatherConditionCode = weatherResponse.weather[0].icon;
-          this.currentTemperature = weatherResponse.main.temp;
+          this.currentTemperature = Math.round(weatherResponse.main.temp);
         })
       })
       .catch(err => console.error('Error getting geolocation: ', err));
