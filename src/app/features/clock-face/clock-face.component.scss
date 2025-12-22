@@ -27,6 +27,9 @@
   transform-origin: center;
   will-change: transform;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+  z-index: 10;
+
+  animation: rotate 60s steps(60) infinite;
 }
 
 .clock-face__minute-hand {
@@ -39,11 +42,14 @@
   //display: none;
 }
 
+
 .clock-face__minute-hand-image {
   inline-size: auto;
   transform-origin: center;
   will-change: transform;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+
+  animation: rotate 30s steps(30) infinite;
 }
 
 .clock-face__hour-hand {
@@ -61,4 +67,12 @@
   transform-origin: center;
   will-change: transform;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+
+  animation: rotate 15s steps(10) infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
