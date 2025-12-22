@@ -1,9 +1,6 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
-import { MatChipComponent } from '../../shared/mat-chip/mat-chip.component';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {MatChipComponent} from '../../shared/mat-chip/mat-chip.component';
 
-type WeatherChipTone = 'soft' | 'solid';
-
-const WEATHER_ICON_PATTERN = /^[0-9]{2}[dn]$/i;
 
 @Component({
   selector: 'nrla-weather-chip',
@@ -14,44 +11,23 @@ const WEATHER_ICON_PATTERN = /^[0-9]{2}[dn]$/i;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherChipComponent {
-  private _conditionCode = '01d';
-  private _tone: WeatherChipTone = 'soft';
-
-  @HostBinding('class.weather-chip') baseClass = true;
-
-  @HostBinding('class.weather-chip--soft')
-  get isSoftTone() {
-    return this._tone === 'soft';
-  }
-
-  @HostBinding('class.weather-chip--solid')
-  get isSolidTone() {
-    return this._tone === 'solid';
-  }
+  private _conditionCode: string | undefined; // '01d'
 
   @Input()
   temperatureCelsius: number | string = 9;
 
   @Input()
-  set conditionCode(value: string | null | undefined) {
-    const normalized = (value || '').trim().toLowerCase();
-    this._conditionCode = WEATHER_ICON_PATTERN.test(normalized) ? normalized : '01d';
+  set conditionCode(value: string) {
+    this._conditionCode = value
   }
 
-  get conditionCode(): string {
+  get conditionCode(): string | undefined {
     return this._conditionCode;
   }
 
-  @Input()
-  set tone(value: WeatherChipTone) {
-    this._tone = value ?? 'soft';
-  }
-
-  get tone(): WeatherChipTone {
-    return this._tone;
-  }
-
-  get iconUrl(): string {
-    return `https://openweathermap.org/img/wn/${this._conditionCode}@2x.png`;
+  get iconUrl(): string | undefined {
+    console.log('iconUrl: ', this._conditionCode, '')
+    return this._conditionCode ?
+      `https://openweathermap.org/img/wn/${this._conditionCode}@2x.png` : undefined;
   }
 }

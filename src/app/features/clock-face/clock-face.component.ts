@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DateChipComponent} from '../date-chip/date-chip.component';
+import {WeatherChipComponent} from '../weather-chip/weather-chip.component';
 
 @Component({
   selector: 'nrla-clock-face',
@@ -7,13 +8,16 @@ import {DateChipComponent} from '../date-chip/date-chip.component';
   templateUrl: './clock-face.component.html',
   styleUrl: './clock-face.component.scss',
   imports: [
-    DateChipComponent
+    DateChipComponent,
+    WeatherChipComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClockFaceComponent implements OnInit {
 
   protected readonly today = new Date();
+  protected readonly weatherConditionCode = '01d';
+  protected readonly currentTemperature = 9;
 
   secsHandTransform = '';
   minsHandTransform = '';

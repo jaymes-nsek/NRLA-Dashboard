@@ -2,6 +2,15 @@
   display: block;
 }
 
+::ng-deep {
+  .weather-chip {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+}
+
+// nrla-weather-chip
+
 .clock-face {
   position: relative;
   display: grid;
@@ -62,6 +71,7 @@
 
   &__data-chips {
     display: grid;
+    justify-content: center;
     height: 100%;
     align-items: center;
     z-index: 10;

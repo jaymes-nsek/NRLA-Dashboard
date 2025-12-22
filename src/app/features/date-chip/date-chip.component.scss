@@ -16,5 +16,8 @@
 
     -webkit-user-select: none; // Safari
     user-select: none;
+
+    display: flex;
+    align-items: center;
   }
 }
