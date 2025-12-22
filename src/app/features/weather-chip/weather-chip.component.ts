@@ -26,7 +26,6 @@ export class WeatherChipComponent {
   }
 
   get iconUrl(): string | undefined {
-    console.log('iconUrl: ', this._conditionCode, '')
     return this._conditionCode ?
       `https://openweathermap.org/img/wn/${this._conditionCode}@2x.png` : undefined;
   }

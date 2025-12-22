@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DateChipComponent} from '../date-chip/date-chip.component';
 import {WeatherChipComponent} from '../weather-chip/weather-chip.component';
+import {WeatherService} from '../../services/weather.service';
 
 @Component({
   selector: 'nrla-clock-face',
@@ -23,7 +24,7 @@ export class ClockFaceComponent implements OnInit {
   minsHandTransform = '';
   hoursHandTransform = '';
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(private cdr: ChangeDetectorRef, private weatherService: WeatherService) {
   }
 
 
@@ -49,6 +50,8 @@ export class ClockFaceComponent implements OnInit {
 
       this.cdr.detectChanges()
     });
+
+    this.getWeatherInfo();
   }
 
   /**
@@ -69,5 +72,40 @@ export class ClockFaceComponent implements OnInit {
     }
 
     requestAnimationFrame(frame);
+  }
+
+  /**
+   * @param defaultValue used for testing and points to the Houses of Parliament in London.
+   */
+  private async getGeoLocation(defaultValue: GeoData = {lat: 51.498870849609375, lon: -0.12533999979496002}):
+    Promise<GeoData> {
+
+    if (!('geolocation' in navigator)) {
+      return defaultValue;
+    }
+
+    try {
+      const position = await new Promise<GeolocationPosition>(
+        (resolve, reject) =>
+          navigator.geolocation.getCurrentPosition(resolve, reject)
+      );
+
+      return {
+        lat: position.coords.latitude,
+        lon: position.coords.longitude
+      };
+    } catch {
+      return defaultValue;
+    }
+  }
+
+  private getWeatherInfo() {
+    this.getGeoLocation()
+      .then(geoData => {
+        this.weatherService.getWeatherInfo(geoData).subscribe(weatherResponse => {
+          console.log('weatherResponse: ', weatherResponse)
+        })
+      })
+      .catch(err => console.error('Error getting geolocation: ', err));
   }
 }
