@@ -1,12 +1,10 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { ClockFaceComponent } from './features/clock-face/clock-face.component';
 
 @Component({
   selector: 'nrla-root',
-  imports: [RouterOutlet],
+  imports: [ClockFaceComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
-  protected readonly title = signal('NRLA-Dashboard');
-}
+export class App {}
