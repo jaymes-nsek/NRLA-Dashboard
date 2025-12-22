@@ -1,6 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 -115 60 130" width="200" height="200" aria-label="Minute hand">
+<!-- =========================================================
+     MINUTE HAND — absolute centring (same bounds as face)
+     - thickness = 2.5x seconds = 5
+     - kept within face; does not exceed borders
+     ========================================================= -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Minute hand">
+  <title>Minute Hand</title>
+
   <g id="minute-hand" stroke="#111" stroke-linecap="round" fill="none">
-    <!-- Minute hand: longer than hour, no ring -->
-    <line x1="0" y1="-100" x2="0" y2="8" stroke-width="5"></line>
+    <line x1="100" y1="10" x2="100" y2="112" stroke-width="5"></line>
   </g>
 </svg>
