@@ -1,75 +1,24 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {BaseService} from './base.service';
-import {delay, Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {WeatherResponse} from '../../models/weather-response.model';
+import {APP_CONFIG} from '../../tokens/app-config.token';
+import {AppConfig} from '../../models/app-config.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService extends BaseService {
-  constructor() {
+  constructor( @Inject(APP_CONFIG) public config: AppConfig) {
     super();
   }
 
-
   getWeatherInfo(geoData: GeoData): Observable<WeatherResponse> {
-    const dummyResponse: WeatherResponse = {
-      "coord": {
-        "lon": 10.99,
-        "lat": 44.34
-      },
-      "weather": [
-        {
-          "id": 501,
-          "main": "Rain",
-          "description": "moderate rain",
-          "icon": "10d"
-        }
-      ],
-      "base": "stations",
-      "main": {
-        "temp": 298.48,
-        "feels_like": 298.74,
-        "temp_min": 297.56,
-        "temp_max": 300.05,
-        "pressure": 1015,
-        "humidity": 64,
-        "sea_level": 1015,
-        "grnd_level": 933
-      },
-      "visibility": 10000,
-      "wind": {
-        "speed": 0.62,
-        "deg": 349,
-        "gust": 1.18
-      },
-      "rain": {
-        "1h": 3.16
-      },
-      "clouds": {
-        "all": 100
-      },
-      "dt": 1661870592,
-      "sys": {
-        "type": 2,
-        "id": 2075663,
-        "country": "IT",
-        "sunrise": 1661834187,
-        "sunset": 1661882248
-      },
-      "timezone": 7200,
-      "id": 3163858,
-      "name": "Zocca",
-      "cod": 200
-    }
-
-    return of(dummyResponse).pipe(delay(1000));
-
-    /*const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
-    const apiKey = 'xxx';
+    const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
+    const apiKey = this.config.openWeatherAccessToken;
 
     const url = `${baseUrl}?lat=${geoData.lat}&lon=${geoData.lon}&appid=${apiKey}&units=metric`;
 
-    return this.get<WeatherResponse>(url);*/
+    return this.get<WeatherResponse>(url);
   }
 }
