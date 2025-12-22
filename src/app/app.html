@@ -1,5 +1,11 @@
 <main class="app-shell">
   <section class="app-shell__panel">
+    <nrla-date-chip class="app-shell__block" [date]="today"></nrla-date-chip>
+    <nrla-weather-chip
+      class="app-shell__block"
+      [conditionCode]="weatherConditionCode"
+      [temperatureCelsius]="currentTemperature"
+    ></nrla-weather-chip>
     <nrla-clock-face />
   </section>
 </main>

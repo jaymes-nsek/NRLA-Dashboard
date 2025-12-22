@@ -1,0 +1,9 @@
+<mat-chip class="weather-chip__surface" aria-label="Weather summary">
+  <img
+    class="weather-chip__icon"
+    [src]="iconUrl"
+    [alt]="'Weather icon code ' + conditionCode"
+    loading="lazy"
+  />
+  <span class="weather-chip__temperature">{{ temperatureCelsius }}°C</span>
+</mat-chip>

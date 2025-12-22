@@ -1,0 +1,28 @@
+.weather-chip {
+  display: inline-block;
+
+  &__surface {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-inline-size: 150px;
+  }
+
+  &__icon {
+    inline-size: 28px;
+    block-size: 28px;
+    object-fit: contain;
+  }
+
+  &__temperature {
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    color: #1f2937;
+  }
+
+  &--solid &__surface {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #111827;
+  }
+}
