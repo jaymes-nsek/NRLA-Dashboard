@@ -11,4 +11,9 @@
 .app-shell__panel {
   display: grid;
   place-items: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.app-shell__block {
+  margin-block: clamp(0.5rem, 1vw, 1.25rem);
 }
