@@ -26,8 +26,6 @@
       will-change: transform;
       filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
       z-index: 10;
-
-      animation: rotate 60s steps(60) infinite;
     }
   }
 
@@ -38,15 +36,11 @@
     place-items: center;
     pointer-events: none;
 
-    //display: none;
-
     &-image {
       inline-size: auto;
       transform-origin: center;
       will-change: transform;
       filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
-
-      animation: rotate 30s steps(30) infinite;
     }
   }
 
@@ -58,22 +52,11 @@
     place-items: center;
     pointer-events: none;
 
-    //display: none;
-
     &-image {
       inline-size: auto;
       transform-origin: center;
       will-change: transform;
       filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
-
-      animation: rotate 12s steps(12) infinite;
     }
-  }
-}
-
-
-@keyframes rotate {
-  to {
-    transform: rotate(360deg);
   }
 }
