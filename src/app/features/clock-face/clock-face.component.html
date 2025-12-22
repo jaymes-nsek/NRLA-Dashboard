@@ -1,35 +1,37 @@
 <div class="clock-face" aria-label="Clock face with seconds hand">
   <div class="clock-face__second-hand">
     <img [style.transform]="secsHandTransform"
-      class="clock-face__second-hand-image"
-      src="/assets/sec_hand.svg"
-      alt="Seconds hand aligned to the clock centre"
-      loading="lazy"
+         class="clock-face__second-hand-image"
+         src="/assets/sec_hand.svg"
+         alt="Seconds hand aligned to the clock centre"
+         loading="lazy"
     />
   </div>
 
   <div class="clock-face__minute-hand">
     <img [style.transform]="minsHandTransform"
-      class="clock-face__minute-hand-image"
-      src="/assets/min_hand_v2.svg"
-      alt="Minutes hand aligned to the clock centre"
-      loading="lazy"
+         class="clock-face__minute-hand-image"
+         src="/assets/min_hand_v2.svg"
+         alt="Minutes hand aligned to the clock centre"
+         loading="lazy"
     />
   </div>
 
   <div class="clock-face__hour-hand">
     <img [style.transform]="hoursHandTransform"
-      class="clock-face__hour-hand-image"
-      src="/assets/hour_hand_v2.svg"
-      alt="Hours hand aligned to the clock centre"
-      loading="lazy"
+         class="clock-face__hour-hand-image"
+         src="/assets/hour_hand_v2.svg"
+         alt="Hours hand aligned to the clock centre"
+         loading="lazy"
     />
   </div>
 
   <div class="clock-face__data-chips">
-    <nrla-date-chip [date]="today"></nrla-date-chip>
+    <nrla-date-chip [date]="today" [style.visibility]="today ? 'visible' : 'hidden'"></nrla-date-chip>
 
     <nrla-weather-chip class="clock-face__data-chips"
-      [conditionCode]="weatherConditionCode" [temperatureCelsius]="currentTemperature"></nrla-weather-chip>
+                       [style.visibility]="(weatherConditionCode == 'null' && currentTemperature == 0) ? 'hidden' : 'visible'"
+                       [conditionCode]="weatherConditionCode"
+                       [temperatureCelsius]="currentTemperature"></nrla-weather-chip>
   </div>
 </div>

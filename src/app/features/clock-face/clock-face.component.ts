@@ -16,9 +16,11 @@ import {WeatherService} from '../../services/weather.service';
 })
 export class ClockFaceComponent implements OnInit {
 
-  protected readonly today = new Date();
-  protected readonly weatherConditionCode = '01d';
-  protected readonly currentTemperature = 9;
+  startDay?: number; // use to track changes in "day" value
+
+  protected today?: Date;
+  protected weatherConditionCode = 'null';
+  protected currentTemperature = 0;
 
   secsHandTransform = '';
   minsHandTransform = '';
@@ -31,6 +33,12 @@ export class ClockFaceComponent implements OnInit {
   ngOnInit() {
     this.startAnimation((t: number) => {
       const d = new Date(t);
+
+      if (this.startDay !== d.getDay()) {
+        // Intended to prevent unnecessary updates from other changes cause to date other than "day"
+        this.startDay = d.getDay();
+        this.today = d;
+      }
 
       // seconds hand
       const ms = d.getMilliseconds();
@@ -103,7 +111,10 @@ export class ClockFaceComponent implements OnInit {
     this.getGeoLocation()
       .then(geoData => {
         this.weatherService.getWeatherInfo(geoData).subscribe(weatherResponse => {
-          console.log('weatherResponse: ', weatherResponse)
+          console.log('weatherResponse: ', weatherResponse);
+
+          this.weatherConditionCode = weatherResponse.weather[0].icon;
+          this.currentTemperature = weatherResponse.main.temp;
         })
       })
       .catch(err => console.error('Error getting geolocation: ', err));

@@ -11,7 +11,7 @@ import {MatChipComponent} from '../../shared/mat-chip/mat-chip.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherChipComponent {
-  private _conditionCode: string | undefined; // '01d'
+  private _conditionCode?: string; // '01d'
 
   @Input()
   temperatureCelsius: number | string = 9;
