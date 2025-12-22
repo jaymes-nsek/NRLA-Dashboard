@@ -10,7 +10,7 @@
   <title>Seconds Hand</title>
 
   <g id="seconds-hand" stroke="#111" stroke-linecap="round" fill="none">
-    <line x1="100" y1="0" x2="100" y2="115" stroke-width="2"></line>
-    <circle cx="100" cy="100" r="7" fill="#fff" stroke="#111" stroke-width="3"></circle>
+    <line x1="100" y1="14" x2="100" y2="115" stroke-width="1"></line>
+    <circle cx="100" cy="100" r="4.2" fill="#fff" stroke="#111" stroke-width="2.6"></circle>
   </g>
 </svg>

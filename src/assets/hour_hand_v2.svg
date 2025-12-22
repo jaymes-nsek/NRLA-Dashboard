@@ -12,6 +12,6 @@
 
   <g id="hour-hand" stroke="#111" stroke-linecap="round" fill="none">
     <!-- Shorter than minute; bottom clipped to ring edge -->
-    <line x1="100" y1="28" x2="100" y2="100.75" stroke-width="12.5"></line>
+    <line x1="100" y1="42" x2="100" y2="100.75" stroke-width="5.4"></line>
   </g>
 </svg>

@@ -36,7 +36,8 @@ nrla-weather-chip {
       transform-origin: center;
       will-change: transform;
       filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
-      z-index: 10;
+
+      z-index: 10; // to make sure it's on top of the other hands
     }
   }
 
@@ -48,6 +49,7 @@ nrla-weather-chip {
     pointer-events: none;
 
     &-image {
+      block-size: 74%; // if not set, it will be around 50% and will those be clipped when trying to make hand longer
       inline-size: auto;
       transform-origin: center;
       will-change: transform;
