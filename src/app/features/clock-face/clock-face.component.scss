@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.clock-face {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: min(90vw, 360px);
+  aspect-ratio: 1;
+  background: url('/assets/clock_face.svg') center/contain no-repeat;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.clock-face__second-hand {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.clock-face__second-hand-image {
+  block-size: 78%;
+  inline-size: auto;
+  transform-origin: center;
+  will-change: transform;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+}
