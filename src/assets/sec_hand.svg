@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -110 40 140" width="200" height="200" aria-label="Seconds hand">
+  <!-- Seconds hand: thinnest -->
+  <g id="seconds-hand" stroke="#111" stroke-linecap="round" fill="none">
+    <!-- Main line: above and below the ring (pivot at 0,0) -->
+    <line x1="0" y1="-100" x2="0" y2="15" stroke-width="2"></line>
+
+    <!-- Ring at pivot -->
+    <circle cx="0" cy="0" r="7" fill="#fff" stroke="#111" stroke-width="3"></circle>
+  </g>
+</svg>

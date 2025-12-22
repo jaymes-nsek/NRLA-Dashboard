@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -95 80 115" width="200" height="200" aria-label="Hour hand">
+  <g id="hour-hand" stroke="#111" stroke-linecap="round" fill="none">
+    <!-- Hour hand: shorter, thickest -->
+    <line x1="0" y1="-75" x2="0" y2="8" stroke-width="12.5"></line>
+  </g>
+</svg>

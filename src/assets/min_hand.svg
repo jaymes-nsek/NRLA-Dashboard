@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 -115 60 130" width="200" height="200" aria-label="Minute hand">
+  <g id="minute-hand" stroke="#111" stroke-linecap="round" fill="none">
+    <!-- Minute hand: longer than hour, no ring -->
+    <line x1="0" y1="-100" x2="0" y2="8" stroke-width="5"></line>
+  </g>
+</svg>

@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-120 -120 240 240" width="480" height="480" role="img" aria-label="Clock face dial">
+  <title>Clock Face Dial</title>
+
+  <defs>
+    <!-- Primitives at 12 o'clock; rotated into place -->
+    <line id="tick-minute" x1="0" y1="-95" x2="0" y2="-91"></line>
+    <line id="tick-five" x1="0" y1="-96" x2="0" y2="-88"></line>
+    <rect id="hour-bar" x="-1.5" y="-96" width="3" height="10" rx="0.8"></rect>
+  </defs>
+
+  <!-- =========================
+       RINGS (exactly 3)
+       ========================= -->
+  <g id="rings" fill="none">
+    <circle r="110" stroke="#dddddd" stroke-width="3.2"></circle>
+    <circle r="104" stroke="#e6e6e6" stroke-width="1.2"></circle>
+    <circle r="100" stroke="#cfcfcf" stroke-width="0.9"></circle>
+  </g>
+
+  <!-- =========================
+       TICKS
+       ========================= -->
+  <g id="ticks" stroke-linecap="round" vector-effect="non-scaling-stroke">
+    <!-- Minute ticks (exclude multiples of 5) -->
+    <g id="minute-ticks" stroke="#c8c8c8" stroke-width="0.9" opacity="0.85">
+      <use href="#tick-minute" transform="rotate(6)"></use>
+      <use href="#tick-minute" transform="rotate(12)"></use>
+      <use href="#tick-minute" transform="rotate(18)"></use>
+      <use href="#tick-minute" transform="rotate(24)"></use>
+
+      <use href="#tick-minute" transform="rotate(36)"></use>
+      <use href="#tick-minute" transform="rotate(42)"></use>
+      <use href="#tick-minute" transform="rotate(48)"></use>
+      <use href="#tick-minute" transform="rotate(54)"></use>
+
+      <use href="#tick-minute" transform="rotate(66)"></use>
+      <use href="#tick-minute" transform="rotate(72)"></use>
+      <use href="#tick-minute" transform="rotate(78)"></use>
+      <use href="#tick-minute" transform="rotate(84)"></use>
+
+      <use href="#tick-minute" transform="rotate(96)"></use>
+      <use href="#tick-minute" transform="rotate(102)"></use>
+      <use href="#tick-minute" transform="rotate(108)"></use>
+      <use href="#tick-minute" transform="rotate(114)"></use>
+
+      <use href="#tick-minute" transform="rotate(126)"></use>
+      <use href="#tick-minute" transform="rotate(132)"></use>
+      <use href="#tick-minute" transform="rotate(138)"></use>
+      <use href="#tick-minute" transform="rotate(144)"></use>
+
+      <use href="#tick-minute" transform="rotate(156)"></use>
+      <use href="#tick-minute" transform="rotate(162)"></use>
+      <use href="#tick-minute" transform="rotate(168)"></use>
+      <use href="#tick-minute" transform="rotate(174)"></use>
+
+      <use href="#tick-minute" transform="rotate(186)"></use>
+      <use href="#tick-minute" transform="rotate(192)"></use>
+      <use href="#tick-minute" transform="rotate(198)"></use>
+      <use href="#tick-minute" transform="rotate(204)"></use>
+
+      <use href="#tick-minute" transform="rotate(216)"></use>
+      <use href="#tick-minute" transform="rotate(222)"></use>
+      <use href="#tick-minute" transform="rotate(228)"></use>
+      <use href="#tick-minute" transform="rotate(234)"></use>
+
+      <use href="#tick-minute" transform="rotate(246)"></use>
+      <use href="#tick-minute" transform="rotate(252)"></use>
+      <use href="#tick-minute" transform="rotate(258)"></use>
+      <use href="#tick-minute" transform="rotate(264)"></use>
+
+      <use href="#tick-minute" transform="rotate(276)"></use>
+      <use href="#tick-minute" transform="rotate(282)"></use>
+      <use href="#tick-minute" transform="rotate(288)"></use>
+      <use href="#tick-minute" transform="rotate(294)"></use>
+
+      <use href="#tick-minute" transform="rotate(306)"></use>
+      <use href="#tick-minute" transform="rotate(312)"></use>
+      <use href="#tick-minute" transform="rotate(318)"></use>
+      <use href="#tick-minute" transform="rotate(324)"></use>
+
+      <use href="#tick-minute" transform="rotate(336)"></use>
+      <use href="#tick-minute" transform="rotate(342)"></use>
+      <use href="#tick-minute" transform="rotate(348)"></use>
+      <use href="#tick-minute" transform="rotate(354)"></use>
+    </g>
+
+    <!-- Five-minute ticks (exclude 0/90/180/270 so they don't sit behind hour bars) -->
+    <g id="five-minute-ticks" stroke="#a9a9a9" stroke-width="1.1" opacity="0.9">
+      <use href="#tick-five" transform="rotate(30)"></use>
+      <use href="#tick-five" transform="rotate(60)"></use>
+      <use href="#tick-five" transform="rotate(120)"></use>
+      <use href="#tick-five" transform="rotate(150)"></use>
+      <use href="#tick-five" transform="rotate(210)"></use>
+      <use href="#tick-five" transform="rotate(240)"></use>
+      <use href="#tick-five" transform="rotate(300)"></use>
+      <use href="#tick-five" transform="rotate(330)"></use>
+    </g>
+  </g>
+
+  <!-- =========================
+       MAJOR HOUR MARKERS ONLY
+       ========================= -->
+  <g id="hour-markers" fill="#1a1a1a" opacity="0.95">
+    <use href="#hour-bar" transform="rotate(0)"></use>
+    <use href="#hour-bar" transform="rotate(90)"></use>
+    <use href="#hour-bar" transform="rotate(180)"></use>
+    <use href="#hour-bar" transform="rotate(270)"></use>
+  </g>
+</svg>
