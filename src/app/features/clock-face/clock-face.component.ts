@@ -10,6 +10,8 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@an
 export class ClockFaceComponent implements OnInit {
 
   secsHandTransform = '';
+  minsHandTransform = '';
+  hoursHandTransform = '';
 
   constructor(private cdr: ChangeDetectorRef) {
   }
@@ -18,12 +20,24 @@ export class ClockFaceComponent implements OnInit {
   ngOnInit() {
     this.startAnimation((t: number) => {
       const d = new Date(t);
+
+      // seconds hand
       const ms = d.getMilliseconds();
       const s = d.getSeconds() + ms / 1000;
       const secondsAngle = (s / 60) * 360;
-
       this.secsHandTransform = `rotate(${secondsAngle}deg)`;
-      this.cdr.detectChanges();
+
+      // minutes hand
+      const m = d.getMinutes();
+      const minutesAngle = (m / 60) * 360;
+      this.minsHandTransform = `rotate(${minutesAngle}deg)`;
+
+      // hours hand
+      const h = d.getHours();
+      const hoursAngle = ((h % 12) / 12) * 360;
+      this.hoursHandTransform = `rotate(${hoursAngle}deg)`;
+
+      this.cdr.detectChanges()
     });
   }
 

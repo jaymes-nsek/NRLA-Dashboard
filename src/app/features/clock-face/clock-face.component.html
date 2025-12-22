@@ -9,7 +9,7 @@
   </div>
 
   <div class="clock-face__minute-hand">
-    <img
+    <img [style.transform]="minsHandTransform"
       class="clock-face__minute-hand-image"
       src="/assets/min_hand_v2.svg"
       alt="Minutes hand aligned to the clock centre"
@@ -18,7 +18,7 @@
   </div>
 
   <div class="clock-face__hour-hand">
-    <img
+    <img [style.transform]="hoursHandTransform"
       class="clock-face__hour-hand-image"
       src="/assets/hour_hand_v2.svg"
       alt="Hours hand aligned to the clock centre"
