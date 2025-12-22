@@ -22,7 +22,41 @@
 }
 
 .clock-face__second-hand-image {
-  block-size: 78%;
+  block-size: 74%;
+  inline-size: auto;
+  transform-origin: center;
+  will-change: transform;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+}
+
+.clock-face__minute-hand {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+
+  //display: none;
+}
+
+.clock-face__minute-hand-image {
+  inline-size: auto;
+  transform-origin: center;
+  will-change: transform;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+}
+
+.clock-face__hour-hand {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+
+  //display: none;
+}
+
+.clock-face__hour-hand-image {
   inline-size: auto;
   transform-origin: center;
   will-change: transform;
