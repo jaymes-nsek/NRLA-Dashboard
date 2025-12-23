@@ -30,6 +30,16 @@ Weather and temperature chips require an OpenWeather API key. Before running `ng
 - Replace `API_KEY` with a valid OpenWeather key. You can obtain a free-tier key by creating an account at https://home.openweathermap.org/users/sign_up.
 - The key enables the app to fetch current weather details and keep the related dashboard chips updated. API documentation: https://docs.openweather.co.uk/current.
 
+
+## Browser Support
+
+The application has been tested against the latest stable versions of:
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge
+
+
+
 ## Useful Angular CLI commands
 
 - Generate a component:
