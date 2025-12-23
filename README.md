@@ -3,9 +3,6 @@
 ## Project summary
 NRLADashboard is an Angular application that surfaces key dashboard information and live weather context for its widgets. The project is built with [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4 and uses Angular Material styling to present cards and chips that update in real time.
 
-## Goal
-Provide a responsive dashboard experience that combines application metrics with current weather and temperature data, ensuring users see up-to-date conditions alongside their core dashboard content.
-
 ## Getting started
 
 1. Install dependencies:

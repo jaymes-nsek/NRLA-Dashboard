@@ -8,7 +8,5 @@ import {ClockFaceComponent} from './features/clock-face/clock-face.component';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly today = new Date();
-  protected readonly weatherConditionCode = '04n';
-  protected readonly currentTemperature = 9;
+  protected readonly title = 'Clock & Weather Widget';
 }
