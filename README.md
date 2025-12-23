@@ -1,36 +1,54 @@
 # NRLADashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
+## Project summary
+NRLADashboard is an Angular application that surfaces key dashboard information and live weather context for its widgets. The project is built with [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4 and uses Angular Material styling to present cards and chips that update in real time.
 
-## Development server
+## Goal
+Provide a responsive dashboard experience that combines application metrics with current weather and temperature data, ensuring users see up-to-date conditions alongside their core dashboard content.
 
-To start a local development server, run:
+## Getting started
 
-``` ng serve ```   or ``` npm start ```
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Add the required runtime configuration (see **Weather API configuration** below).
+3. Start the development server:
+   ```bash
+   ng serve
+   # or
+   npm start
+   ```
+4. Open `http://localhost:4200/` in your browser. The app auto-reloads when files change.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Weather API configuration
+Weather and temperature chips require an OpenWeather API key. Before running `ng serve` or `npm start`, create a JSON file at `src/configs/appconfig.json` with the following structure:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```json
+{
+  "openWeatherAccessToken": "API_KEY"
+}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Replace `API_KEY` with a valid OpenWeather key. You can obtain a free-tier key by creating an account at https://home.openweathermap.org/users/sign_up.
+- The key enables the app to fetch current weather details and keep the related dashboard chips updated. API documentation: https://docs.openweather.co.uk/current.
 
-```bash
-ng generate --help
-```
+## Useful Angular CLI commands
+
+- Generate a component:
+  ```bash
+  ng generate component component-name
+  ```
+- List available schematics (components, directives, pipes, etc.):
+  ```bash
+  ng generate --help
+  ```
 
 ## Building
-
-To build the project run:
+Build the production bundle into `dist/`:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
+Production builds are optimized for performance and speed by default.
