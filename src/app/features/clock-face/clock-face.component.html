@@ -31,6 +31,7 @@
 
     <nrla-weather-chip
       [conditionCode]="weatherConditionCode"
-      [temperatureCelsius]="currentTemperature"></nrla-weather-chip>
+      [temperatureCelsius]="currentTemperature"
+      (imageStateEvent)="onImageStateEvent($event)"></nrla-weather-chip>
   </div>
 </div>

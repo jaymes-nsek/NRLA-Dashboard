@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatChipComponent} from '../../shared/mat-chip/mat-chip.component';
+import {WeatherImageState} from '../clock-face/clock-face.component';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class WeatherChipComponent {
 
   iconUrl?: string;
 
+  @Output() imageStateEvent: EventEmitter<WeatherImageState> = new EventEmitter<WeatherImageState>();
+
   @Input()
   temperatureCelsius?: number;
 
@@ -24,8 +27,10 @@ export class WeatherChipComponent {
 
     if (this._conditionCode) {
       this.iconUrl = `https://openweathermap.org/img/wn/${this._conditionCode}@2x.png`;
+      this.imageStateEvent.emit({status: 'fetching'})
     } else {
       this.iconUrl = undefined;
+      this.imageStateEvent.emit({status: 'idle'})
     }
   }
 
@@ -33,4 +38,12 @@ export class WeatherChipComponent {
     return this._conditionCode;
   }
 
+  protected onImageLoad() {
+    this.imageStateEvent.emit({status: 'success', imageUrl: ''})
+  }
+
+  protected onImageError() {
+    // console.log('Error in WeatherChipComponent');
+    this.imageStateEvent.emit({status: 'error', message: 'Sorry, image could not be loaded.'})
+  }
 }

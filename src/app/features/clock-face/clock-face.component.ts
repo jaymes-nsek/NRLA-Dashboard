@@ -3,6 +3,12 @@ import {DateChipComponent} from '../date-chip/date-chip.component';
 import {WeatherChipComponent} from '../weather-chip/weather-chip.component';
 import {WeatherService} from '../../services/weather.service';
 
+export type WeatherImageState =
+  | { status: 'idle' }
+  | { status: 'fetching' }
+  | { status: 'success'; imageUrl: string }
+  | { status: 'error'; message: string };
+
 @Component({
   selector: 'nrla-clock-face',
   standalone: true,
@@ -10,7 +16,6 @@ import {WeatherService} from '../../services/weather.service';
   styleUrl: './clock-face.component.scss',
   imports: [
     DateChipComponent,
-    WeatherChipComponent,
     WeatherChipComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -26,6 +31,8 @@ export class ClockFaceComponent implements OnInit {
   secsHandTransform = '';
   minsHandTransform = '';
   hoursHandTransform = '';
+
+  imageState: WeatherImageState = {status: 'idle'};
 
   constructor(private cdr: ChangeDetectorRef, private weatherService: WeatherService) {
   }
@@ -105,5 +112,10 @@ export class ClockFaceComponent implements OnInit {
         })
       })
       .catch(err => console.error('Error getting geolocation: ', err));
+  }
+
+  protected onImageStateEvent($event: WeatherImageState) {
+    console.log('onImageStateEvent', $event);
+    this.imageState = $event;
   }
 }
