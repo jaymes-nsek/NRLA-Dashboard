@@ -1,4 +1,6 @@
 .mat-chip {
+  box-sizing: border-box;
+
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -12,4 +14,8 @@
   letter-spacing: 0.05rem;
   color: #111827;
   box-shadow: 0 2px 6px rgba(17, 24, 39, 0.06);
+}
+
+:host {
+  font-size: 4em;
 }

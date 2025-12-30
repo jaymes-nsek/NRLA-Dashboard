@@ -13,20 +13,24 @@ import {MatChipComponent} from '../../shared/mat-chip/mat-chip.component';
 export class WeatherChipComponent {
   private _conditionCode?: string; // '01d'
 
+  iconUrl?: string;
+
   @Input()
-  temperatureCelsius?: number ;
+  temperatureCelsius?: number;
 
   @Input()
   set conditionCode(value: string | undefined) {
     this._conditionCode = value
+
+    if (this._conditionCode) {
+      this.iconUrl = `https://openweathermap.org/img/wn/${this._conditionCode}@2x.png`;
+    } else {
+      this.iconUrl = undefined;
+    }
   }
 
   get conditionCode(): string | undefined {
     return this._conditionCode;
   }
 
-  get iconUrl(): string | undefined {
-    return this._conditionCode ?
-      `https://openweathermap.org/img/wn/${this._conditionCode}@2x.png` : undefined;
-  }
 }
