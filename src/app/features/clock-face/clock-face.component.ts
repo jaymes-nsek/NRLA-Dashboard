@@ -10,6 +10,7 @@ import {WeatherService} from '../../services/weather.service';
   styleUrl: './clock-face.component.scss',
   imports: [
     DateChipComponent,
+    WeatherChipComponent,
     WeatherChipComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -19,7 +20,7 @@ export class ClockFaceComponent implements OnInit {
   startDay?: number; // use to track changes in "day" value
 
   protected today?: Date;
-  protected weatherConditionCode = 'null';
+  protected weatherConditionCode?: string;
   protected currentTemperature = 0;
 
   secsHandTransform = '';
