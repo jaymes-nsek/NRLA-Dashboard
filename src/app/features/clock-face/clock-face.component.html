@@ -1,38 +1,24 @@
 <div class="clock-face" aria-label="Clock face with seconds hand">
-<!--  <div class="clock-face__second-hand">-->
-<!--    <img [style.transform]="secsHandTransform"-->
-<!--         class="clock-face__second-hand-image"-->
-<!--         src="/assets/sec_hand.svg"-->
-<!--         alt="Seconds hand aligned to the clock centre"-->
-<!--         loading="lazy"-->
-<!--    />-->
-<!--  </div>-->
-
   <nrla-clock-hand
     handType="secondHand"
     [transform]="secsHandTransform"
     src="/assets/sec_hand.svg"
     alt="Seconds hand aligned to the clock centre"
-    [loading]="'lazy'"
     (stateChange)="onSecondHandState($event)"></nrla-clock-hand>
 
-  <div class="clock-face__minute-hand">
-    <img [style.transform]="minsHandTransform"
-         class="clock-face__minute-hand-image"
-         src="/assets/min_hand_v2.svg"
-         alt="Minutes hand aligned to the clock centre"
-         loading="lazy"
-    />
-  </div>
+  <nrla-clock-hand
+    handType="minuteHand"
+    [transform]="minsHandTransform"
+    src="/assets/min_hand_v2.svg"
+    alt="Minutes hand aligned to the clock centre">
+  </nrla-clock-hand>
 
-  <div class="clock-face__hour-hand">
-    <img [style.transform]="hoursHandTransform"
-         class="clock-face__hour-hand-image"
-         src="/assets/hour_hand_v2.svg"
-         alt="Hours hand aligned to the clock centre"
-         loading="lazy"
-    />
-  </div>
+  <nrla-clock-hand
+    handType="hourHand"
+    [transform]="hoursHandTransform"
+    src="/assets/hour_hand_v2.svg"
+    alt="Hours hand aligned to the clock centre">
+  </nrla-clock-hand>
 
   <div class="clock-face__data-chips">
     <!-- Adding class clock-face__nrla-weather-chip-wrapper and *--is-hide ensures that when WeatherChip is ready,

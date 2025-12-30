@@ -124,4 +124,5 @@ export class ClockFaceComponent implements OnInit {
   protected onSecondHandState($event: WeatherImageState) {
     // console.log('second hand state: ', $event);
   }
+
 }
