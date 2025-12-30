@@ -35,6 +35,8 @@ export class ClockFaceComponent implements OnInit {
   hoursHandTransform = '';
 
   imageState: WeatherImageState = {status: 'idle'};
+  handsLoadState = [false, false, false]
+  handsLoaded = false;
 
   constructor(private cdr: ChangeDetectorRef, private weatherService: WeatherService) {
   }
@@ -121,8 +123,10 @@ export class ClockFaceComponent implements OnInit {
     this.imageState = $event;
   }
 
-  protected onSecondHandState($event: WeatherImageState) {
+  protected onHandStateChange(index: number, $event: WeatherImageState) {
     // console.log('second hand state: ', $event);
+    this.handsLoadState[index] = ($event.status === 'success');
+    this.handsLoaded = this.handsLoadState.every(Boolean);
   }
 
 }

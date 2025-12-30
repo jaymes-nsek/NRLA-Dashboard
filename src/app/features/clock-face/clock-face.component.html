@@ -1,23 +1,28 @@
-<div class="clock-face" aria-label="Clock face with seconds hand">
+<div
+  class="clock-face"
+  [class.clock-face--is-loaded]="handsLoaded"
+  aria-label="Clock face with seconds hand">
   <nrla-clock-hand
     handType="secondHand"
     [transform]="secsHandTransform"
     src="/assets/sec_hand.svg"
     alt="Seconds hand aligned to the clock centre"
-    (stateChange)="onSecondHandState($event)"></nrla-clock-hand>
+    (stateChange)="onHandStateChange(0, $event)"></nrla-clock-hand>
 
   <nrla-clock-hand
     handType="minuteHand"
     [transform]="minsHandTransform"
     src="/assets/min_hand_v2.svg"
-    alt="Minutes hand aligned to the clock centre">
+    alt="Minutes hand aligned to the clock centre"
+    (stateChange)="onHandStateChange(1, $event)">
   </nrla-clock-hand>
 
   <nrla-clock-hand
     handType="hourHand"
     [transform]="hoursHandTransform"
     src="/assets/hour_hand_v2.svg"
-    alt="Hours hand aligned to the clock centre">
+    alt="Hours hand aligned to the clock centre"
+    (stateChange)="onHandStateChange(2, $event)">
   </nrla-clock-hand>
 
   <div class="clock-face__data-chips">
