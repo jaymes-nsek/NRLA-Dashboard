@@ -27,9 +27,19 @@
   </div>
 
   <div class="clock-face__data-chips">
-    <nrla-date-chip [date]="today" [style.visibility]="today ? 'visible' : 'hidden'"></nrla-date-chip>
+    <!-- Adding class clock-face__nrla-weather-chip-wrapper and *--is-hide ensures that when WeatherChip is ready,
+         its entrance appears in sync with the DateChip.
+         How ever in the event of a delayed WeatherChip, DateChip should still appear immediately.
+    -->
+    <nrla-date-chip
+      [date]="today" [style.visibility]="today ? 'visible' : 'hidden'"
+      class="clock-face__nrla-weather-chip-wrapper"
+      [class.clock-face__nrla-weather-chip-wrapper--is-hide]="!(imageState.status === 'success')"></nrla-date-chip>
 
+    <!-- Hide only nrla-weather-chip if its img has not loaded (with opacity to maintain pos and prevent layout shift). -->
     <nrla-weather-chip
+      class="clock-face__nrla-weather-chip-wrapper"
+      [class.clock-face__nrla-weather-chip-wrapper--is-hide]="!(imageState.status === 'success')"
       [conditionCode]="weatherConditionCode"
       [temperatureCelsius]="currentTemperature"
       (imageStateEvent)="onImageStateEvent($event)"></nrla-weather-chip>

@@ -115,7 +115,7 @@ export class ClockFaceComponent implements OnInit {
   }
 
   protected onImageStateEvent($event: WeatherImageState) {
-    console.log('onImageStateEvent', $event);
+    // console.log('onImageStateEvent', $event);
     this.imageState = $event;
   }
 }
