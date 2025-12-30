@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@an
 import {DateChipComponent} from '../date-chip/date-chip.component';
 import {WeatherChipComponent} from '../weather-chip/weather-chip.component';
 import {WeatherService} from '../../services/weather.service';
+import {ClockHandComponent} from '../clock-hand/clock-hand.component';
 
 export type WeatherImageState =
   | { status: 'idle' }
@@ -16,7 +17,8 @@ export type WeatherImageState =
   styleUrl: './clock-face.component.scss',
   imports: [
     DateChipComponent,
-    WeatherChipComponent
+    WeatherChipComponent,
+    ClockHandComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -117,5 +119,9 @@ export class ClockFaceComponent implements OnInit {
   protected onImageStateEvent($event: WeatherImageState) {
     // console.log('onImageStateEvent', $event);
     this.imageState = $event;
+  }
+
+  protected onSecondHandState($event: WeatherImageState) {
+    // console.log('second hand state: ', $event);
   }
 }

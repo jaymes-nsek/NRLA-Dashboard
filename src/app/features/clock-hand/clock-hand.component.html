@@ -1,0 +1,9 @@
+<img
+  [class]="imageClassBinding"
+  [style.transform]="transform ?? null"
+  [src]="src"
+  [attr.alt]="alt"
+  [attr.loading]="loading"
+  (load)="onImgLoad()"
+  (error)="onImgError()"
+/>
