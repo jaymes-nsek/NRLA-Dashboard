@@ -2,82 +2,110 @@
   display: block;
 }
 
+
 ::ng-deep {
   .weather-chip {
     padding-top: 6px !important;
     padding-bottom: 6px !important;
   }
+
+  .clock-face {
+    position: relative;
+    display: grid;
+    place-items: center;
+    inline-size: min(90vw, 360px);
+    aspect-ratio: 1;
+    background: url('/assets/clock_face.svg') center/contain no-repeat;
+    border-radius: 50%;
+    overflow: hidden;
+
+    opacity: 0;
+    transition-duration: 300ms;
+    transition-property: opacity;
+    transition-timing-function: ease-in;
+    transition-delay: 150ms;
+
+    &--is-loaded {
+      opacity: 1;
+    }
+
+    &__second-hand {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+
+      &-image {
+        block-size: 74%;
+        inline-size: auto;
+        transform-origin: center;
+        will-change: transform;
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+
+        z-index: 10; // to make sure it's on top of the other hands
+      }
+    }
+
+    &__minute-hand {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+
+      &-image {
+        block-size: 74%; // if not set, it will be around 50% and will those be clipped when trying to make hand longer
+        inline-size: auto;
+        transform-origin: center;
+        will-change: transform;
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+      }
+    }
+
+
+    &__hour-hand {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+
+      &-image {
+        inline-size: auto;
+        transform-origin: center;
+        will-change: transform;
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+      }
+    }
+
+    &__data-chips {
+      display: grid;
+      justify-content: center;
+      height: 100%;
+      align-items: center;
+      z-index: 10;
+    }
+  }
 }
+
 
 nrla-weather-chip {
   justify-self: center;
 }
 
-.clock-face {
-  position: relative;
-  display: grid;
-  place-items: center;
-  inline-size: min(90vw, 360px);
-  aspect-ratio: 1;
-  background: url('/assets/clock_face.svg') center/contain no-repeat;
-  border-radius: 50%;
-  overflow: hidden;
 
-  &__second-hand {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    pointer-events: none;
+.clock-face__nrla-weather-chip-wrapper {
+  opacity: 1;
+  transition-duration: 400ms;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  transition-delay: 250ms;
 
-    &-image {
-      block-size: 74%;
-      inline-size: auto;
-      transform-origin: center;
-      will-change: transform;
-      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
+  display: flex;
+  justify-content: center;
 
-      z-index: 10; // to make sure it's on top of the other hands
-    }
-  }
-
-  &__minute-hand {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    pointer-events: none;
-
-    &-image {
-      block-size: 74%; // if not set, it will be around 50% and will those be clipped when trying to make hand longer
-      inline-size: auto;
-      transform-origin: center;
-      will-change: transform;
-      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
-    }
-  }
-
-
-  &__hour-hand {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    pointer-events: none;
-
-    &-image {
-      inline-size: auto;
-      transform-origin: center;
-      will-change: transform;
-      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18));
-    }
-  }
-
-  &__data-chips {
-    display: grid;
-    justify-content: center;
-    height: 100%;
-    align-items: center;
-    z-index: 10;
+  &--is-hide {
+    opacity: 0;
   }
 }

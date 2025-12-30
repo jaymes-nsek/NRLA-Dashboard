@@ -1,10 +1,16 @@
-<mat-chip class="weather-chip date-chip" aria-label="Weather summary">
+<mat-chip class="weather-chip date-chip"
+          aria-label="Weather summary"
+          [maxWidth]=58 [maxHeight]=24>
   @if (iconUrl) {
     <img
       class="weather-chip__icon"
       [src]="iconUrl"
       [alt]="'Weather icon code ' + conditionCode"
       loading="lazy"
+      width="24"
+      height="24"
+      (load)="onImageLoad()"
+      (error)="onImageError()"
     />
   }
 
