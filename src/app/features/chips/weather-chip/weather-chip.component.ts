@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {MatChipComponent} from '../../shared/mat-chip/mat-chip.component';
-import {WeatherImageState} from '../clock-face/clock-face.component';
+import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {MatChipComponent} from '../mat-chip/mat-chip.component';
+import {WeatherImageState} from '../../clock-face/clock-face.component';
 
 
 @Component({
@@ -8,15 +8,16 @@ import {WeatherImageState} from '../clock-face/clock-face.component';
   standalone: true,
   imports: [MatChipComponent],
   templateUrl: './weather-chip.component.html',
-  styleUrl: './weather-chip.component.scss',
+  styleUrls: [
+    './weather-chip.component.scss',
+    './../chips.scss'
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherChipComponent {
   private _conditionCode?: string; // '01d'
 
-  iconUrl?: string;
-
-  @Output() imageStateEvent: EventEmitter<WeatherImageState> = new EventEmitter<WeatherImageState>();
+  @HostBinding('class.weather-chip') baseClass = true;
 
   @Input()
   temperatureCelsius?: number;
@@ -33,6 +34,10 @@ export class WeatherChipComponent {
       this.imageStateEvent.emit({status: 'idle'})
     }
   }
+
+  @Output() imageStateEvent: EventEmitter<WeatherImageState> = new EventEmitter<WeatherImageState>();
+
+  protected iconUrl?: string;
 
   get conditionCode(): string | undefined {
     return this._conditionCode;

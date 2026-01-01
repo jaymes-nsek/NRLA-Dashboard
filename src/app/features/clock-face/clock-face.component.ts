@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {DateChipComponent} from '../date-chip/date-chip.component';
-import {WeatherChipComponent} from '../weather-chip/weather-chip.component';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnInit} from '@angular/core';
+import {DateChipComponent} from '../chips/date-chip/date-chip.component';
+import {WeatherChipComponent} from '../chips/weather-chip/weather-chip.component';
 import {WeatherService} from '../../services/weather.service';
 import {ClockHandComponent} from '../clock-hand/clock-hand.component';
 
@@ -23,6 +23,22 @@ export type WeatherImageState =
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClockFaceComponent implements OnInit {
+  @HostBinding('class') hostClass = 'clock-face';
+
+  @HostBinding('style.width.px')
+  get hostWidth(): number {
+    return this.diameter;
+  }
+
+  @HostBinding('style.height.px')
+  get hostHeight(): number {
+    return this.diameter;
+  }
+
+  /**
+   * Sets diameter to the {@link hostWidth} and {@link hostHeight}.
+   */
+  @Input() diameter = 200;
 
   startDay?: number; // use to track changes in "day" value
 
@@ -118,7 +134,7 @@ export class ClockFaceComponent implements OnInit {
       .catch(err => console.error('Error getting geolocation: ', err));
   }
 
-  protected onImageStateEvent($event: WeatherImageState) {
+  protected onWeatherImageStateEvent($event: WeatherImageState) {
     // console.log('onImageStateEvent', $event);
     this.imageState = $event;
   }

@@ -1,46 +1,51 @@
-<div
-  class="clock-face"
-  [class.clock-face--is-loaded]="handsLoaded"
-  aria-label="Clock face with seconds hand">
-  <nrla-clock-hand
-    handType="secondHand"
-    [transform]="secsHandTransform"
-    src="/assets/sec_hand.svg"
-    alt="Seconds hand aligned to the clock centre"
-    (stateChange)="onHandStateChange(0, $event)"></nrla-clock-hand>
+<div class="clock-face__svg u-fill"
+     [class.clock-face__svg--is-loaded]="handsLoaded"
+     aria-label="Analog clock face widget with hour, minute and second hands.">
 
-  <nrla-clock-hand
-    handType="minuteHand"
-    [transform]="minsHandTransform"
-    src="/assets/min_hand_v2.svg"
-    alt="Minutes hand aligned to the clock centre"
-    (stateChange)="onHandStateChange(1, $event)">
-  </nrla-clock-hand>
+  <!-- The clock-face svg and hands-chips wrappers are separated to allow relative sizing of these
+       to the clock-face-->
+  <div class="clock-face__hands-chips-wrapper" style="width: 80%; height: 80%">
+    <nrla-clock-hand
+      handType="secondHand" [lengthPercent]="84"
+      [transform]="secsHandTransform"
+      src="/assets/sec_hand.svg"
+      alt=""
+      (stateChange)="onHandStateChange(0, $event)"></nrla-clock-hand>
 
-  <nrla-clock-hand
-    handType="hourHand"
-    [transform]="hoursHandTransform"
-    src="/assets/hour_hand_v2.svg"
-    alt="Hours hand aligned to the clock centre"
-    (stateChange)="onHandStateChange(2, $event)">
-  </nrla-clock-hand>
+    <nrla-clock-hand
+      handType="minuteHand" [lengthPercent]="83"
+      [transform]="minsHandTransform"
+      src="/assets/min_hand_v2.svg"
+      alt=""
+      (stateChange)="onHandStateChange(1, $event)">
+    </nrla-clock-hand>
 
-  <div class="clock-face__data-chips">
-    <!-- Adding class clock-face__nrla-weather-chip-wrapper and *--is-hide ensures that when WeatherChip is ready,
-         its entrance appears in sync with the DateChip.
-         How ever in the event of a delayed WeatherChip, DateChip should still appear immediately.
-    -->
-    <nrla-date-chip
-      [date]="today" [style.visibility]="today ? 'visible' : 'hidden'"
-      class="clock-face__nrla-weather-chip-wrapper"
-      [class.clock-face__nrla-weather-chip-wrapper--is-hide]="!(imageState.status === 'success')"></nrla-date-chip>
+    <nrla-clock-hand
+      handType="hourHand" [lengthPercent]="70"
+      [transform]="hoursHandTransform"
+      src="/assets/hour_hand_v2.svg"
+      alt=""
+      (stateChange)="onHandStateChange(2, $event)">
+    </nrla-clock-hand>
 
-    <!-- Hide only nrla-weather-chip if its img has not loaded (with opacity to maintain pos and prevent layout shift). -->
-    <nrla-weather-chip
-      class="clock-face__nrla-weather-chip-wrapper"
-      [class.clock-face__nrla-weather-chip-wrapper--is-hide]="!(imageState.status === 'success')"
-      [conditionCode]="weatherConditionCode"
-      [temperatureCelsius]="currentTemperature"
-      (imageStateEvent)="onImageStateEvent($event)"></nrla-weather-chip>
+    <div class="clock-face__chips-wrapper">
+      <!-- Adding class clock-face__chips-animation and *--hidden ensures that when WeatherChip is ready,
+           its entrance appears in sync with the DateChip.
+           How ever in the event of a delayed WeatherChip, DateChip should still appear immediately.
+      -->
+      <nrla-date-chip
+        [date]="today" [style.visibility]="today ? 'visible' : 'hidden'"
+        class="clock-face__chips-animation"
+        [class.clock-face__chips-animation--hidden]="!(imageState.status === 'success')"></nrla-date-chip>
+
+      <!-- Hide only nrla-weather-chip if its img has not loaded (with opacity to maintain pos and prevent layout shift). -->
+      <nrla-weather-chip
+        class="clock-face__chips-animation"
+        [class.clock-face__chips-animation--hidden]="!(imageState.status === 'success')"
+        [conditionCode]="weatherConditionCode"
+        [temperatureCelsius]="currentTemperature"
+        (imageStateEvent)="onWeatherImageStateEvent($event)"></nrla-weather-chip>
+    </div>
   </div>
+
 </div>
