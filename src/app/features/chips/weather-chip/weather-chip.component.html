@@ -1,6 +1,6 @@
 <mat-chip class="weather-chip__mat-chip"
           aria-label="Weather summary"
-          [width]="'100%'" [height]="'100%'">
+          [width]="matChipWidth" [height]="'100%'">
   @if (iconUrl) {
     <img
       class="weather-chip__icon"
@@ -14,5 +14,5 @@
     />
   }
 
-  <span class="date-chip__text">{{ temperatureCelsius }}°C</span>
+  <span class="weather-chip__text">{{ temperatureCelsius }}°C</span>
 </mat-chip>

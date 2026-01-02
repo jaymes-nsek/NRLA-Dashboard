@@ -44,6 +44,7 @@
         [class.clock-face__chips-animation--hidden]="!(imageState.status === 'success')"
         [conditionCode]="weatherConditionCode"
         [temperatureCelsius]="currentTemperature"
+        matChipWidth="66%"
         (imageStateEvent)="onWeatherImageStateEvent($event)"></nrla-weather-chip>
     </div>
   </div>
