@@ -34,15 +34,22 @@
 /// @param {Length} $start - Lower bound (inclusive)
 /// @param {Length} $end - Upper bound (exclusive)
 /// @param {Length} $font-size - Font size to apply
+/// @param {String} $icon-size - Width and Height value for icon img (default: 24px)
 @mixin container-font-size(
   $start,
   $end,
-  $font-size
+  $font-size,
+  $icon-size: 24px,
 ) {
   @container infoChipsContainer (inline-size >= #{$start}) and (inline-size < #{$end}) {
     .date-chip__text,
     .weather-chip__text {
       font-size: $font-size;
+    }
+
+    .weather-chip__icon {
+      width: $icon-size;
+      height: $icon-size;
     }
   }
 }
@@ -61,24 +68,36 @@
     .weather-chip__text {
       font-size: 0.35em;
     }
+
+    .weather-chip__icon {
+      width: 8px;
+      height: 8px;
+    }
   }
 
-  @include container-font-size(71px, 110px, 0.72em);
+  @include container-font-size(71px, 110px, 0.75em, 12px);
 
-  @include container-font-size(110px, 160px, 1.2em);
+  @include container-font-size(110px, 130px, 0.92em, 18px);
 
-  @include container-font-size(160px, 210px, 1.6em);
+  @include container-font-size(130px, 160px, 1.2em, 18px);
 
-  @include container-font-size(210px, 280px, 2.2em);
+  @include container-font-size(160px, 210px, 1.4em, 28px);
 
-  @include container-font-size(280px, 380px, 2.8em);
+  @include container-font-size(210px, 280px, 2.2em, 36px);
 
-  @include container-font-size(380px, 540px, 3.8em);
+  @include container-font-size(280px, 380px, 2.8em, 48px);
+
+  @include container-font-size(380px, 540px, 3.8em, 60px);
 
   @container infoChipsContainer (inline-size >= 540px) {
     .date-chip__text,
     .weather-chip__text {
       font-size: 5em;
+    }
+
+    .weather-chip__icon {
+      width: 72px;
+      height: 72px;
     }
   }
   //endregion
