@@ -1,5 +1,6 @@
 <mat-chip class="date-chip__mat-chip"
           aria-label="Selected calendar date"
           [width]="'100%'" [height]="'100%'">
+  <!--Test width to guarantee fit for all combinations 'Wed, Aug 31'-->
   <span class="date-chip__text">{{ date | date: 'EEE, MMM d' }}</span>
 </mat-chip>

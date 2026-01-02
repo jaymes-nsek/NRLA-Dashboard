@@ -22,6 +22,17 @@ export class WeatherChipComponent {
   @Input()
   temperatureCelsius?: number;
 
+  /**
+   * Provided to allow setting .weather-chip__mat-chip child element's occupying width
+   * independent of the parent .weather-chip.
+   *
+   * @example .weather-chip could be set to 100% or a fixed width of 160px, whilst setting
+   * .weather-chip__mat-chip to 60%. The aim here would be to allow the overall component to
+   * occupy a particular width in the DOM whilst we independently reduced the size of the
+   * inner child.
+   */
+  @Input() matChipWidth: string = '100%';
+
   @Input()
   set conditionCode(value: string | undefined) {
     this._conditionCode = value

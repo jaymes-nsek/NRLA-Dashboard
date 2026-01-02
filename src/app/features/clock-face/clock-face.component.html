@@ -1,4 +1,4 @@
-<div class="clock-face__svg u-fill"
+<div class="clock-face__svg u-fill u-user-select--none"
      [class.clock-face__svg--is-loaded]="handsLoaded"
      aria-label="Analog clock face widget with hour, minute and second hands.">
 
@@ -44,6 +44,7 @@
         [class.clock-face__chips-animation--hidden]="!(imageState.status === 'success')"
         [conditionCode]="weatherConditionCode"
         [temperatureCelsius]="currentTemperature"
+        matChipWidth="66%"
         (imageStateEvent)="onWeatherImageStateEvent($event)"></nrla-weather-chip>
     </div>
   </div>

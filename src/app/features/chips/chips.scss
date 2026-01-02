@@ -1,3 +1,7 @@
+:host(.date-chip), :host(.weather-chip) {
+  font-size: 12px; // Affects *__text em values, effect of change on RWD should be checked
+}
+
 .date-chip, .weather-chip {
 
   &__mat-chip {
@@ -8,12 +12,13 @@
 
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   &__text {
     font-weight: 600;
-    font-size: 0.46rem;
-    letter-spacing: 0.15rem;
+    font-size: clamp(0.4em, 1.2vw, 1em); // Fallback in case @container-type not supported
+    letter-spacing: 0.15em;
     color: #1f2937;
     text-transform: uppercase;
 
@@ -23,4 +28,92 @@
     display: flex;
     align-items: center;
   }
+}
+
+/// Container-query font scaling helper
+/// @param {Length} $start - Lower bound (inclusive)
+/// @param {Length} $end - Upper bound (exclusive)
+/// @param {Length} $font-size - Font size to apply
+/// @param {String} $icon-size - Width and Height value for icon img (default: 24px)
+/// @param {String} $border-radius - Border radius value to apply to .mat-chip (default: 8px)
+@mixin container-font-size(
+  $start,
+  $end,
+  $font-size,
+  $icon-size: 24px,
+  $border-radius: 8px
+) {
+  @container infoChipsContainer (inline-size >= #{$start}) and (inline-size < #{$end}) {
+    .date-chip__text,
+    .weather-chip__text {
+      font-size: $font-size;
+    }
+
+    .weather-chip__icon {
+      width: $icon-size;
+      height: $icon-size;
+    }
+
+    .mat-chip {
+      border-radius: $border-radius;
+    }
+  }
+}
+
+// Enhance text representation if container queries exist
+@supports (container-type: inline-size) {
+  :host(.date-chip),
+  :host(.weather-chip) {
+    container-type: inline-size;
+    container-name: infoChipsContainer;
+  }
+
+  //region infoChipsContainer queries matches
+  @container infoChipsContainer (inline-size < 70px) {
+    .date-chip__text,
+    .weather-chip__text {
+      font-size: 0.35em;
+    }
+
+    .weather-chip__icon {
+      width: 8px;
+      height: 8px;
+    }
+
+    .mat-chip {
+      border-radius: 8px;
+    }
+  }
+
+  @include container-font-size(70px, 110px, 0.75em, 12px);
+
+  @include container-font-size(110px, 130px, 0.92em, 18px);
+
+  @include container-font-size(130px, 160px, 1.2em, 18px);
+
+  @include container-font-size(160px, 210px, 1.4em, 28px, 12px);
+
+  @include container-font-size(210px, 280px, 2.2em, 36px, 18px);
+
+  @include container-font-size(280px, 380px, 2.8em, 48px, 24px);
+
+  @include container-font-size(380px, 540px, 3.8em, 60px, 32px);
+
+  @container infoChipsContainer (inline-size >= 540px) {
+    .date-chip__text,
+    .weather-chip__text {
+      font-size: 5em;
+    }
+
+    .weather-chip__icon {
+      width: 72px;
+      height: 72px;
+    }
+
+    .mat-chip {
+      border-radius: 36px;
+    }
+  }
+  //endregion
+
 }

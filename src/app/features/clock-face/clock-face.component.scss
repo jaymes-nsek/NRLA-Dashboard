@@ -1,3 +1,11 @@
+:host(.clock-face) {
+  //region For testing and device-ing RWD on chips text, COMMENT IN PROD
+  /*height: unset !important;
+  width: 100vw !important;
+  aspect-ratio: 1 / 1 !important;*/
+  //endregion
+}
+
 .clock-face {
 
   &__svg {
@@ -73,8 +81,7 @@
 
 .weather-chip {
   bottom: 0;
-  left: 17%; // Half + half + what is used for width
-  width: 66%;
+  width: 100%;
 }
 
 .date-chip {
