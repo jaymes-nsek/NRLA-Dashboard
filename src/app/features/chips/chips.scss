@@ -40,7 +40,8 @@
   $font-size
 ) {
   @container infoChipsContainer (inline-size >= #{$start}) and (inline-size < #{$end}) {
-    .date-chip__text {
+    .date-chip__text,
+    .weather-chip__text {
       font-size: $font-size;
     }
   }
@@ -48,13 +49,16 @@
 
 // Enhance text representation if container queries exist
 @supports (container-type: inline-size) {
-  .date-chip__mat-chip {
+  :host(.date-chip),
+  :host(.weather-chip) {
     container-type: inline-size;
     container-name: infoChipsContainer;
   }
 
+  //region infoChipsContainer queries matches
   @container infoChipsContainer (inline-size < 70px) {
-    .date-chip__text {
+    .date-chip__text,
+    .weather-chip__text {
       font-size: 0.35em;
     }
   }
@@ -72,9 +76,11 @@
   @include container-font-size(380px, 540px, 3.8em);
 
   @container infoChipsContainer (inline-size >= 540px) {
-    .date-chip__text {
+    .date-chip__text,
+    .weather-chip__text {
       font-size: 5em;
     }
   }
+  //endregion
 
 }
